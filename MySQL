@@ -1,0 +1,83 @@
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
+--
+-- Host: 127.0.0.1    Database: chirpr
+-- ------------------------------------------------------
+-- Server version	8.0.31
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `chirps`
+--
+
+DROP TABLE IF EXISTS `chirps`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `chirps` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `userid` int NOT NULL,
+  `content` varchar(100) NOT NULL,
+  `location` varchar(50) NOT NULL,
+  `_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `fk_user_chirps` (`userid`),
+  CONSTRAINT `fk_user_chirps` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `chirps`
+--
+
+LOCK TABLES `chirps` WRITE;
+/*!40000 ALTER TABLE `chirps` DISABLE KEYS */;
+INSERT INTO `chirps` VALUES (2,1,'fun stuff!','Atlanta','2022-10-13 16:19:56'),(3,2,'good stuff!','Dallas','2022-10-13 16:19:56'),(4,3,'hot stuff!','Marietta','2022-10-13 16:19:56'),(5,4,'bad stuff!','Birmingham','2022-10-13 16:19:56'),(6,5,'scary stuff!','Charleston','2022-10-13 16:19:56'),(7,6,'wierd stuff!','New York City','2022-10-13 16:19:56'),(8,7,'groovy stuff!','LA','2022-10-13 16:19:56'),(9,8,'chill stuff!','Tacoma','2022-10-13 16:19:56'),(10,9,'cheugy stuff!','Zion','2022-10-13 16:19:56'),(11,10,'scalable stuff!','Memphis','2022-10-13 16:19:56'),(12,1,'fun vibes!','Atlanta','2022-10-13 16:19:56'),(13,2,'good vibes!','Dallas','2022-10-13 16:19:56'),(14,3,'hot vibes!','Marietta','2022-10-13 16:19:56'),(15,4,'bad vibes!','Birmingham','2022-10-13 16:19:56'),(16,5,'scary vibes!','Charleston','2022-10-13 16:19:56'),(17,6,'wierd vibes!','New York City','2022-10-13 16:19:56'),(18,7,'groovy vibes!','LA','2022-10-13 16:19:56'),(19,8,'chill vibes!','Tacoma','2022-10-13 16:19:56'),(20,9,'cheugy vibes!','Zion','2022-10-13 16:19:56'),(21,10,'scalable vibes!','Memphis','2022-10-13 16:19:56');
+/*!40000 ALTER TABLE `chirps` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `password` text,
+  `_created` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES (1,'Michael','Michael@coolnet.com',NULL,'2022-10-13 16:07:03'),(2,'Matt','Matt@coolnet.com',NULL,'2022-10-13 16:07:03'),(3,'Chris','Chris@coolnet.com',NULL,'2022-10-13 16:07:03'),(4,'Will','Will@coolnet.com',NULL,'2022-10-13 16:07:03'),(5,'Tom','Tom@coolnet.com',NULL,'2022-10-13 16:07:03'),(6,'Alex','Alex@coolnet.com',NULL,'2022-10-13 16:07:03'),(7,'Alen','Alen@coolnet.com',NULL,'2022-10-13 16:07:03'),(8,'Nate','Nate@coolnet.com',NULL,'2022-10-13 16:07:03'),(9,'Ben','Ben@coolnet.com',NULL,'2022-10-13 16:07:03'),(10,'Pat','Pat@coolnet.com',NULL,'2022-10-13 16:07:03');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-10-18  9:52:00
